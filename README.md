@@ -1,1 +1,1 @@
-# participation_activities
+# Labs for CSCI 1511

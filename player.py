@@ -6,6 +6,7 @@
 from coin import Coin
 
 class Player:
+    """Creates players with a name, wallet, and a coin. Uses multiple methods such as toss_coin and get_coin_side."""
     def __init__(self, name, wallet, coin):
         self.name = name
         self.wallet = wallet

@@ -6,6 +6,7 @@
 import random
 
 class Coin:
+    """Creates coins with toss and get_sideup methods"""
     def __init__(self, sideup="Heads"):
         self.sideup = sideup
     def toss(self):

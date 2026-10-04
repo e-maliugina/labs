@@ -32,3 +32,42 @@ class WordAnalyzer:
         sorted_words = sorted(self._frequencies.keys())
         for word in sorted_words:
             print(f"{word:<7} :: {self._frequencies[word]}")
+
+def main():
+    """Creates a dictionary with the paths and runs the program."""
+    script_dir = Path(__file__).parent
+
+    files_dict = {
+        "1": script_dir / "tarzan.md",
+        "2": script_dir / "treasure_island.md",
+        "3": script_dir / "sherlock_holmes.md",
+        "4": script_dir / "the_odyssey.md"
+    }
+    while True:
+        print("\n--- Word Analyzer ---")
+        print("Please select a file to analyze:")
+        print(f"1. Tarzan ({files_dict['1'].name})")
+        print(f"2. Treasure Island ({files_dict['2'].name})")
+        print(f"3. Sherlock Holmes ({files_dict['3'].name})")
+        print(f"4. The Odyssey ({files_dict['4'].name})")
+        print("5. Exit")
+
+        user_choice = input("\nEnter your choice (1-5): ").strip()
+
+        if user_choice == "5":
+            print("\nExiting program.")
+            break
+        if user_choice in files_dict:
+            selected_path = files_dict[user_choice]
+            print(f"\nProcessing '{selected_path.name}' ...")
+            analyzer = WordAnalyzer(str(selected_path))
+            success = analyzer._process_file()
+            if success:
+                print(f"\n--- Word Frequency ---")
+                analyzer.print_report()
+                input("\nPress Enter to return to the menu...")
+        else:
+            print("\nInvalid Choice. Please select from 1-5.")
+
+if __name__ == "__main__":
+    main()
